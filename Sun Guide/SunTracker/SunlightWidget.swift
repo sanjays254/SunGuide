@@ -65,8 +65,8 @@ struct WidgetEntryView : View {
                         .font(.system(size: 20))
                     
                     // if Date() is past sunriseTime, show sunsetTime
-                    Text(entry.sunriseTime)
-                        .font(.system(size: 10))
+//                    Text(entry.sunriseTime)
+//                        .font(.system(size: 10))
                 }
 
                 

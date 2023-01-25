@@ -1,0 +1,562 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A0ABC559298158B8005756F5 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0ABC558298158B8005756F5 /* WidgetKit.framework */; };
+		A0ABC55B298158B8005756F5 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0ABC55A298158B8005756F5 /* SwiftUI.framework */; };
+		A0ABC55E298158B8005756F5 /* SunTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ABC55D298158B8005756F5 /* SunTracker.swift */; };
+		A0ABC561298158B9005756F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0ABC560298158B9005756F5 /* Assets.xcassets */; };
+		A0ABC563298158B9005756F5 /* SunTracker.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = A0ABC55F298158B8005756F5 /* SunTracker.intentdefinition */; };
+		A0ABC564298158B9005756F5 /* SunTracker.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = A0ABC55F298158B8005756F5 /* SunTracker.intentdefinition */; };
+		A0ABC568298158B9005756F5 /* SunTrackerExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A0ABC556298158B8005756F5 /* SunTrackerExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A0ABC56C29815921005756F5 /* SunlightTimelineEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF83C8298155C7007E6216 /* SunlightTimelineEntry.swift */; };
+		A0ABC56D29815928005756F5 /* SunlightWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF83C2298155C7007E6216 /* SunlightWidget.swift */; };
+		A0FF83B6298154B8007E6216 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF83B5298154B8007E6216 /* ContentView.swift */; };
+		A0FF83B8298154B9007E6216 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0FF83B7298154B9007E6216 /* Assets.xcassets */; };
+		A0FF83BB298154B9007E6216 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0FF83BA298154B9007E6216 /* Preview Assets.xcassets */; };
+		A0FF83CD298155C8007E6216 /* SunTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF83C1298155C7007E6216 /* SunTimes.swift */; };
+		A0FF83CF298155C8007E6216 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF83C3298155C7007E6216 /* LocationManager.swift */; };
+		A0FF83D0298155C8007E6216 /* CreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF83C4298155C7007E6216 /* CreditsView.swift */; };
+		A0FF83D4298155C8007E6216 /* SunGuideApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF83CA298155C7007E6216 /* SunGuideApp.swift */; };
+		A0FF83D5298155C8007E6216 /* FormattedTimeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF83CB298155C7007E6216 /* FormattedTimeLabel.swift */; };
+		A0FF83D6298155C8007E6216 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF83CC298155C7007E6216 /* Network.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A0ABC565298158B9005756F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A0FF83A8298154B8007E6216 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A0ABC555298158B8005756F5;
+			remoteInfo = SunTrackerExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A0ABC567298158B9005756F5 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A0ABC568298158B9005756F5 /* SunTrackerExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A0ABC556298158B8005756F5 /* SunTrackerExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SunTrackerExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0ABC558298158B8005756F5 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		A0ABC55A298158B8005756F5 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		A0ABC55D298158B8005756F5 /* SunTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTracker.swift; sourceTree = "<group>"; };
+		A0ABC55F298158B8005756F5 /* SunTracker.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = SunTracker.intentdefinition; sourceTree = "<group>"; };
+		A0ABC560298158B9005756F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A0ABC562298158B9005756F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0FF83B0298154B8007E6216 /* Sun Guide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sun Guide.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0FF83B5298154B8007E6216 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A0FF83B7298154B9007E6216 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A0FF83BA298154B9007E6216 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A0FF83C1298155C7007E6216 /* SunTimes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SunTimes.swift; sourceTree = "<group>"; };
+		A0FF83C2298155C7007E6216 /* SunlightWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SunlightWidget.swift; sourceTree = "<group>"; };
+		A0FF83C3298155C7007E6216 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		A0FF83C4298155C7007E6216 /* CreditsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
+		A0FF83C5298155C7007E6216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Sun Guide/Info.plist"; sourceTree = "<group>"; };
+		A0FF83C6298155C7007E6216 /* SunGuide.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = SunGuide.entitlements; path = "Sun Guide/SunGuide.entitlements"; sourceTree = "<group>"; };
+		A0FF83C7298155C7007E6216 /* SunGuideWidgetExtension.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = SunGuideWidgetExtension.entitlements; path = "Sun Guide/SunGuideWidgetExtension.entitlements"; sourceTree = "<group>"; };
+		A0FF83C8298155C7007E6216 /* SunlightTimelineEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SunlightTimelineEntry.swift; sourceTree = "<group>"; };
+		A0FF83CA298155C7007E6216 /* SunGuideApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SunGuideApp.swift; sourceTree = "<group>"; };
+		A0FF83CB298155C7007E6216 /* FormattedTimeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormattedTimeLabel.swift; sourceTree = "<group>"; };
+		A0FF83CC298155C7007E6216 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A0ABC553298158B8005756F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0ABC55B298158B8005756F5 /* SwiftUI.framework in Frameworks */,
+				A0ABC559298158B8005756F5 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0FF83AD298154B8007E6216 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A0ABC557298158B8005756F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A0ABC558298158B8005756F5 /* WidgetKit.framework */,
+				A0ABC55A298158B8005756F5 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A0ABC55C298158B8005756F5 /* SunTracker */ = {
+			isa = PBXGroup;
+			children = (
+				A0FF83C2298155C7007E6216 /* SunlightWidget.swift */,
+				A0FF83C8298155C7007E6216 /* SunlightTimelineEntry.swift */,
+				A0ABC55D298158B8005756F5 /* SunTracker.swift */,
+				A0ABC55F298158B8005756F5 /* SunTracker.intentdefinition */,
+				A0ABC560298158B9005756F5 /* Assets.xcassets */,
+				A0ABC562298158B9005756F5 /* Info.plist */,
+			);
+			path = SunTracker;
+			sourceTree = "<group>";
+		};
+		A0FF83A7298154B8007E6216 = {
+			isa = PBXGroup;
+			children = (
+				A0FF83C5298155C7007E6216 /* Info.plist */,
+				A0FF83C6298155C7007E6216 /* SunGuide.entitlements */,
+				A0FF83C7298155C7007E6216 /* SunGuideWidgetExtension.entitlements */,
+				A0FF83B2298154B8007E6216 /* Sun Guide */,
+				A0ABC55C298158B8005756F5 /* SunTracker */,
+				A0ABC557298158B8005756F5 /* Frameworks */,
+				A0FF83B1298154B8007E6216 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A0FF83B1298154B8007E6216 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A0FF83B0298154B8007E6216 /* Sun Guide.app */,
+				A0ABC556298158B8005756F5 /* SunTrackerExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A0FF83B2298154B8007E6216 /* Sun Guide */ = {
+			isa = PBXGroup;
+			children = (
+				A0FF83C3298155C7007E6216 /* LocationManager.swift */,
+				A0FF83CC298155C7007E6216 /* Network.swift */,
+				A0FF83CA298155C7007E6216 /* SunGuideApp.swift */,
+				A0FF83C4298155C7007E6216 /* CreditsView.swift */,
+				A0FF83CB298155C7007E6216 /* FormattedTimeLabel.swift */,
+				A0FF83C1298155C7007E6216 /* SunTimes.swift */,
+				A0FF83B5298154B8007E6216 /* ContentView.swift */,
+				A0FF83B7298154B9007E6216 /* Assets.xcassets */,
+				A0FF83B9298154B9007E6216 /* Preview Content */,
+			);
+			path = "Sun Guide";
+			sourceTree = "<group>";
+		};
+		A0FF83B9298154B9007E6216 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				A0FF83BA298154B9007E6216 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A0ABC555298158B8005756F5 /* SunTrackerExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A0ABC56B298158B9005756F5 /* Build configuration list for PBXNativeTarget "SunTrackerExtension" */;
+			buildPhases = (
+				A0ABC552298158B8005756F5 /* Sources */,
+				A0ABC553298158B8005756F5 /* Frameworks */,
+				A0ABC554298158B8005756F5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SunTrackerExtension;
+			productName = SunTrackerExtension;
+			productReference = A0ABC556298158B8005756F5 /* SunTrackerExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		A0FF83AF298154B8007E6216 /* Sun Guide */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A0FF83BE298154B9007E6216 /* Build configuration list for PBXNativeTarget "Sun Guide" */;
+			buildPhases = (
+				A0FF83AC298154B8007E6216 /* Sources */,
+				A0FF83AD298154B8007E6216 /* Frameworks */,
+				A0FF83AE298154B8007E6216 /* Resources */,
+				A0ABC567298158B9005756F5 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A0ABC566298158B9005756F5 /* PBXTargetDependency */,
+			);
+			name = "Sun Guide";
+			productName = "Sun Guide";
+			productReference = A0FF83B0298154B8007E6216 /* Sun Guide.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A0FF83A8298154B8007E6216 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					A0ABC555298158B8005756F5 = {
+						CreatedOnToolsVersion = 14.0;
+					};
+					A0FF83AF298154B8007E6216 = {
+						CreatedOnToolsVersion = 14.0;
+					};
+				};
+			};
+			buildConfigurationList = A0FF83AB298154B8007E6216 /* Build configuration list for PBXProject "Sun Guide" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A0FF83A7298154B8007E6216;
+			productRefGroup = A0FF83B1298154B8007E6216 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A0FF83AF298154B8007E6216 /* Sun Guide */,
+				A0ABC555298158B8005756F5 /* SunTrackerExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A0ABC554298158B8005756F5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0ABC561298158B9005756F5 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0FF83AE298154B8007E6216 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0FF83BB298154B9007E6216 /* Preview Assets.xcassets in Resources */,
+				A0FF83B8298154B9007E6216 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A0ABC552298158B8005756F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0ABC563298158B9005756F5 /* SunTracker.intentdefinition in Sources */,
+				A0ABC56D29815928005756F5 /* SunlightWidget.swift in Sources */,
+				A0ABC55E298158B8005756F5 /* SunTracker.swift in Sources */,
+				A0ABC56C29815921005756F5 /* SunlightTimelineEntry.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0FF83AC298154B8007E6216 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0FF83B6298154B8007E6216 /* ContentView.swift in Sources */,
+				A0FF83D5298155C8007E6216 /* FormattedTimeLabel.swift in Sources */,
+				A0FF83CF298155C8007E6216 /* LocationManager.swift in Sources */,
+				A0FF83D6298155C8007E6216 /* Network.swift in Sources */,
+				A0FF83D4298155C8007E6216 /* SunGuideApp.swift in Sources */,
+				A0FF83D0298155C8007E6216 /* CreditsView.swift in Sources */,
+				A0ABC564298158B9005756F5 /* SunTracker.intentdefinition in Sources */,
+				A0FF83CD298155C8007E6216 /* SunTimes.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A0ABC566298158B9005756F5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A0ABC555298158B8005756F5 /* SunTrackerExtension */;
+			targetProxy = A0ABC565298158B9005756F5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A0ABC569298158B9005756F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L4XYQHCH99;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SunTracker/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SunTracker;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ShahLabs.Sun-Guide.SunTracker";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A0ABC56A298158B9005756F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L4XYQHCH99;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SunTracker/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SunTracker;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ShahLabs.Sun-Guide.SunTracker";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A0FF83BC298154B9007E6216 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A0FF83BD298154B9007E6216 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A0FF83BF298154B9007E6216 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Sun Guide/Preview Content\"";
+				DEVELOPMENT_TEAM = L4XYQHCH99;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ShahLabs.Sun-Guide";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A0FF83C0298154B9007E6216 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Sun Guide/Preview Content\"";
+				DEVELOPMENT_TEAM = L4XYQHCH99;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ShahLabs.Sun-Guide";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A0ABC56B298158B9005756F5 /* Build configuration list for PBXNativeTarget "SunTrackerExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0ABC569298158B9005756F5 /* Debug */,
+				A0ABC56A298158B9005756F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A0FF83AB298154B8007E6216 /* Build configuration list for PBXProject "Sun Guide" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0FF83BC298154B9007E6216 /* Debug */,
+				A0FF83BD298154B9007E6216 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A0FF83BE298154B9007E6216 /* Build configuration list for PBXNativeTarget "Sun Guide" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0FF83BF298154B9007E6216 /* Debug */,
+				A0FF83C0298154B9007E6216 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A0FF83A8298154B8007E6216 /* Project object */;
+}

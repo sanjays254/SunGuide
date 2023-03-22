@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>NSLocationUsageDescription</key>
-	<string>I dunno man</string>
+	<string>Your location is needed for finding the sun&apos;s position relative to you</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Neeed it ugh</string>
+	<string>Your location is needed for finding the sun&apos;s position relative to you</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Need your location for something</string>
+	<string>Your location is needed for finding the sun&apos;s position relative to you</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Need it for something</string>
+	<string>Your location is needed for finding the sun&apos;s position relative to you</string>
 	<key>NSExtension</key>
 	<dict>
 		<key>NSExtensionPointIdentifier</key>

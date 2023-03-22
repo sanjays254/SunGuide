@@ -20,6 +20,7 @@ struct SunTimes: Decodable {
 }
 
 
+
 struct LocalizedSunTimes {
     var sunrise: String
     var sunset: String

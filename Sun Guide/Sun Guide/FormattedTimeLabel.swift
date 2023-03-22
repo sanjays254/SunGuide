@@ -12,8 +12,8 @@ struct FormattedTimeLabel: View {
     
     let dateFormatter = ISO8601DateFormatter()
 
-
     var body: some View {
+
         if ((time) != nil) {
             Text(
                 dateFormatter.date(

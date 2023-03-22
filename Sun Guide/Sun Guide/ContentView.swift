@@ -11,6 +11,18 @@ import CoreLocation
 @available(iOS 16.0, *)
 struct ContentView: View {
     @EnvironmentObject var network: Network
+    @Environment(\.scenePhase) var scenePhase
+
+    
+    
+    @StateObject private var calculator = SunlightLeftCalculator()
+    @StateObject private var backgroundGradient = BackgroundGradientCalculator()
+    
+    @State private var animate = false
+
+
+    
+    private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     let dateFormatter = ISO8601DateFormatter()
         
@@ -82,9 +94,9 @@ struct ContentView: View {
                                             .foregroundColor(.white)
                                             .font(.system(size: 35))
                                         
-                                        Text("Sunset")
+                                        Text("Sunrise")
                                             .foregroundColor(.white)
-                                        FormattedTimeLabel(time: network.localizedSunTimes?.sunset)
+                                        FormattedTimeLabel(time: network.localizedSunTimes?.sunrise)
                                     }
                                     .padding(20)
                                     Spacer()
@@ -92,9 +104,9 @@ struct ContentView: View {
                                         Image(systemName: "sun.and.horizon")
                                             .foregroundColor(.white)
                                             .font(.system(size: 35))
-                                        Text("Sunrise")
+                                        Text("Sunset")
                                             .foregroundColor(.white)
-                                        FormattedTimeLabel(time: network.localizedSunTimes?.sunrise)
+                                        FormattedTimeLabel(time: network.localizedSunTimes?.sunset)
                                     }
                                     .padding(20)
                                     
@@ -108,65 +120,103 @@ struct ContentView: View {
                                 }
                                 .stroke(.white, style: StrokeStyle(lineWidth: 2, lineCap: .square, lineJoin: .bevel, dash: [CGFloat(25)]))
                                 
-                                HStack {
+
                                     
+                                VStack(alignment: .leading) {
+                                    Divider()
+                                        .overlay(Color.white)
+
                                     
-                                    VStack(alignment: .leading) {
-                                        Text("Day length")
+                                    Text("Total sunlight")
+                                        .foregroundColor(.white)
+                                        .font(.caption)
+                                    Spacer()
+
+                                    if (network.localizedSunTimes != nil) {
+                                        Text(network.localizedSunTimes!.dayLength)
                                             .foregroundColor(.white)
-                                            .font(.subheadline)
-                                        if (network.localizedSunTimes != nil) {
-                                            Text(network.localizedSunTimes!.dayLength)
-                                                .foregroundColor(.white)
-                                                .font(.caption)
-                                        } else {
-                                            Text("Day length")
-                                                .foregroundColor(.white)
+                                            .font(.title3)
+                                    } else {
+                                        Text("3h 45m 67s")
+                                            .foregroundColor(.white)
+                                            .font(.title3)
+
                                             .redacted(reason: .placeholder)
-
-                                        }
-
-
+                                        
                                     }
+                                    
+                                    
+                                    Divider()
+                                        .overlay(Color.white)
+
                                     Spacer()
                                     
-                                    VStack(alignment: .trailing) {
-                                        Text("Sunlight left today")
-                                            .foregroundColor(.white)
-                                            .font(.subheadline)
-                                        Text("6h 5m 57s")
+                                        Text("Sunlight remaining")
                                             .foregroundColor(.white)
                                             .font(.caption)
 
+                                    Spacer()
+
+                                    if (calculator.countdown != nil) {
+                                        Text("\(calculator.countdown!)")
+                                                .foregroundColor(.white)
+                                                .font(.title3)
+                                    } else {
+                                        Text("3h 45m 67s")
+                                            .foregroundColor(.white)
+                                            .font(.title3)
+
+                                            .redacted(reason: .placeholder)
                                     }
+
+                                    
+                                    Divider()
+                                        .overlay(Color.white)
+                                        
                                     
                                 }
-                                .padding(.horizontal)
+                                
+                                
+                                .padding(EdgeInsets(top: 30, leading: 20, bottom: 50, trailing: 20))
+                                
                                 
                                 Spacer(minLength: 100)
-                                HStack {
+                                HStack(alignment: .bottom) {
                                     VStack(alignment: .leading) {
-                                       
-                                            Image(systemName: "location.circle")
-                                                .foregroundColor(.white)
-                                                .font(.system(size: 20))
-                                            Text(network.city ?? "Waiting")
-                                                .font(.subheadline)
-                                                .bold()
-                                                .foregroundStyle(Color.white)
-                                        
-                                        Spacer(minLength: 20)
+                    
                                         
                                         Text("Today")
                                         
                                             .font(.title).bold().foregroundStyle(Color.white)
-                                        Text(dateFormatter.date(
-                                            from:network.localizedSunTimes?.sunset ?? "Dunno")?.formatted(date: .long, time: .omitted) ?? "Today")
-                                        .font(.caption)
+                                        
+                                        Spacer(minLength: 5)
+
+                                        Text(Date().formatted(date: .long, time: .omitted))
                                         .foregroundStyle(Color.white)
                                     }
-                                    .padding(50)
+                                    .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
+                      
                                     Spacer()
+                                    
+                                    VStack(alignment: .trailing) {
+                                        
+                                        Image(systemName: "location.circle")
+                                            .foregroundColor(.white)
+                                            .font(.system(size: 25))
+                                        Spacer(minLength: 5)
+                                        
+                                        if (network.city != nil) {
+                                            Text(network.city!)
+                                                .foregroundStyle(Color.white)
+                                        } else {
+                                            Text("City name")
+                                                .foregroundStyle(Color.white)
+                                                .redacted(reason: .placeholder)
+                                        }
+
+                                        
+                                    }
+                                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 20))
                                 }
                             }
                             
@@ -179,24 +229,69 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(
                     LinearGradient(
-                        gradient: Gradient(colors: [.yellow, .red]),
+                        gradient: animate ? Gradient(colors: [backgroundGradient.topColor, backgroundGradient.bottomColor]) : Gradient(colors: [.yellow, .red]),
                         startPoint: .top,
                         endPoint: .bottom
                     )
                 )
-                .opacity(0.8)
+                .opacity(0.9)
                 .scrollIndicators(.never)
+
             
         
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .onReceive(timer) { _ in
+            calculator.updateCountdown()
+            backgroundGradient.calculate()
+            animate = true
+
+        }
+        .animation(.easeInOut, value: animate) // not working
+
+        .onChange(of: scenePhase) { newPhase in
+             if newPhase == .active {
+                 network.getTimes()
+                 backgroundGradient.calculate()
+                 animate = true
+//                 timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+             } else if newPhase == .inactive {
+                 timer.upstream.connect().cancel()
+             } else if newPhase == .background {
+                 print("Background")
+             }
+         }
+        
+        .task(id: network.sunTimes?.sunset) {
+            if let sunsetTime = network.sunTimes?.sunset {
+                calculator.setSunsetTime(sunsetTime: sunsetTime)
+                backgroundGradient.setSunsetTime(sunsetTime: sunsetTime)
+
+            }
+            
+            if let sunriseTime = network.sunTimes?.sunrise {
+                calculator.setSunriseTime(sunriseTime: sunriseTime)
+                backgroundGradient.setSunriseTime(sunriseTime: sunriseTime)
+
+            }
+        }
     }
+    
+
 
 }
 
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        Text("temp")
-//        ContentView(showModal: false)
-//            .environmentObject(Network())
+        ContentView_PreviewContainer()
+    }
+}
+
+
+struct ContentView_PreviewContainer: View {
+    @State private var showCredits: Bool = false
+    var body: some View {
+        ContentView(showModal: $showCredits)
+            .environmentObject(Network())
     }
 }

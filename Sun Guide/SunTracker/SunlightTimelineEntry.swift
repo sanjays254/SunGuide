@@ -15,5 +15,4 @@ struct SunlightTimelineEntry: TimelineEntry {
     let currentSunPosition: CGFloat
     let sunriseDegrees: CGFloat
     let sunsetDegrees: CGFloat
-    let configuration: ConfigurationIntent
 }

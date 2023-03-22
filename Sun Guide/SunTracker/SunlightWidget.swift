@@ -15,13 +15,13 @@ struct SunlightWidget: Widget {
     let kind: String = "SunlightWidget"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: WidgetTimelineProvider()) { entry in
+        StaticConfiguration(kind: kind, provider: WidgetTimelineProvider()) { entry in
             WidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("Sun")
+        .configurationDisplayName("Sun Tracker")
         .description("More options to come in the future!")
                 #if os(watchOS)
-                    .supportedFamilies([.accessoryCircular, .accessoryRectangular, .accessoryInline, .accessoryCorner])
+                    .supportedFamilies([.accessoryCircular])
                 #else
                     .supportedFamilies([.accessoryCircular])
                 #endif
@@ -32,8 +32,8 @@ struct SunlightWidget: Widget {
 @available(iOSApplicationExtension 16.0, *)
 struct SunlightWidget_Previews: PreviewProvider {
     static var previews: some View {
-        WidgetEntryView(entry: SunlightTimelineEntry(date: Date(), sunsetTime: "19:00", sunriseTime: "07:00", currentSunPosition: CGFloat(0.25), sunriseDegrees: CGFloat(0), sunsetDegrees: CGFloat(0.5), configuration: ConfigurationIntent()))
-            .previewContext(WidgetPreviewContext(family: .accessoryCircular))
+        WidgetEntryView(entry: SunlightTimelineEntry(date: Date(), sunsetTime: "19:00", sunriseTime: "07:00", currentSunPosition: CGFloat(90), sunriseDegrees: CGFloat(0.25), sunsetDegrees: CGFloat(0.8)))
+            .previewContext(WidgetPreviewContext(family: .accessoryRectangular))
     }
 }
 
@@ -47,33 +47,106 @@ struct WidgetEntryView : View {
 
     
     var body: some View {
+        
+        // Day light bar
+        
+        // 0 = 6am
+        // 0.25 = 12pm
+        // 0.5 = 6pm
+        // 0.75 = 12am
+        
+        
+        // dayLengthInDegrees = ((entry.sunsetDegrees - entry.sunriseDegrees) / 1) * 360
+        
+        
+        // Sun location
+        
+        // 0 = midday or 12
+        // 90 = 6pm or 18
+        // 180 = 24
+        // 270 = 6
+        
+        // 00:00 = -180
+        // 06:00 = -90
+        // 12:00 = 0
+        // 18:00 = 90
+        
+        
+        // currentSunPositionDegrees = entry.currentSunPosition
+        
+        
         switch widgetFamily {
         case .accessoryCircular:
+            
+
             ZStack {
                 Circle()
-                    .stroke(Color(.systemGray6).opacity(0.25), lineWidth: 10)
+
+                    .stroke(Color(.systemGray6).opacity(0.25), lineWidth: 5)
                 Circle()
                     .trim(from: entry.sunriseDegrees, to: entry.sunsetDegrees)
-                    .stroke(Color(.systemGray2).opacity(0.5), style: StrokeStyle(lineWidth: 10, lineCap: .butt))
-                    .rotationEffect(.degrees(-180))
+                    .stroke(Color(.systemGray2).opacity(0.75), style: StrokeStyle(lineWidth: 5, lineCap: .round))
+                    .rotationEffect(.degrees(90))
+//                Circle()
+//                    .trim(from: entry.currentSunPosition, to: entry.currentSunPosition + 0.05)
+//                    .stroke(Color(.systemGray2).opacity(1), style: StrokeStyle(lineWidth: 10, lineCap: .round))
+//                    .rotationEffect(.degrees(-180))
+
+
+
                 Circle()
-                    .trim(from: entry.currentSunPosition, to: entry.currentSunPosition + 0.05)
-                    .stroke(Color(.systemGray2).opacity(1), style: StrokeStyle(lineWidth: 10, lineCap: .round))
-                    .rotationEffect(.degrees(-180))
-                VStack {
-                    Image(systemName: "sun.and.horizon")
-                        .font(.system(size: 20))
+                .frame(width: 10, height: 8)
+                .background(Color(.systemGray2).opacity(0))
+                .offset(y: -24)
+
+                .rotationEffect(Angle.degrees(entry.currentSunPosition))
+
+                    Image(systemName: "sun.max")
+                        .font(.system(size: 22))
+
+                    // if Date() is past sunriseTime, show sunsetTime
+//                    Text(entry.sunriseTime)
+//                        .font(.system(size: 10))
+
+
+
+            }
+            .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+
+
+        default:
+            ZStack {
+                Circle()
+                    
+                    .stroke(Color(.systemGray6).opacity(0.25), lineWidth: 5)
+                Circle()
+                    .trim(from: entry.sunriseDegrees, to: entry.sunsetDegrees)
+                    .stroke(Color(.systemGray2).opacity(0.75), style: StrokeStyle(lineWidth: 5, lineCap: .round))
+                    .rotationEffect(.degrees(90))
+//                Circle()
+//                    .trim(from: entry.currentSunPosition, to: entry.currentSunPosition + 0.05)
+//                    .stroke(Color(.systemGray2).opacity(1), style: StrokeStyle(lineWidth: 10, lineCap: .round))
+//                    .rotationEffect(.degrees(-180))
+                
+                
+                
+                Circle()
+                .frame(width: 10, height: 8)
+                .background(Color(.systemGray2).opacity(0))
+                .offset(y: -24)
+                
+                .rotationEffect(Angle.degrees(entry.currentSunPosition))
+                
+                    Image(systemName: "sun.max")
+                        .font(.system(size: 22))
                     
                     // if Date() is past sunriseTime, show sunsetTime
 //                    Text(entry.sunriseTime)
 //                        .font(.system(size: 10))
-                }
+                
 
                 
             }
-
-        default:
-            Spacer()
 //            HStack{
 //                Spacer()
 //                VStack{

@@ -35,7 +35,7 @@ struct CreditsView: View {
                     .foregroundColor(.white)
                     .font(.subheadline)
                     .padding(.horizontal)
-                Text("Thanks to the [Sunrise Sunset API](https://sunrise-sunset.org/api) for their sun data")
+                Text("Thanks to the [Sunrise Sunset API](https://sunrise-sunset.org/api) for their sun data.")
                     .foregroundColor(.white)
                     .font(.subheadline)
                     .padding(.all)
@@ -43,10 +43,10 @@ struct CreditsView: View {
                     .foregroundColor(.white)
                     .font(.subheadline)
                     .padding(.horizontal)
+
                 
-                //            Link("Sunrise-Sunset Website", destination: URL(string: "https://sunrise-sunset.org/api")!)
-                //                .font(.caption)
             }
+            .padding(EdgeInsets(top: 0, leading: 0, bottom: 50, trailing: 0))
             .contentShape(
                 Rectangle()
                 
@@ -54,14 +54,24 @@ struct CreditsView: View {
             .onTapGesture {
                 self.showModal.toggle()
             }
+            
         }
+
     }
 }
 
 struct CreditsView_Previews: PreviewProvider {
     
     static var previews: some View {
-        Text("No binding")
-//        CreditsView(showModal: true)
+        CreditsView_PreviewContainer()
+    }
+}
+
+
+struct CreditsView_PreviewContainer: View {
+    @State private var showCredits: Bool = false
+    var body: some View {
+        CreditsView(showModal: $showCredits)
+            .background(Color.orange)
     }
 }

@@ -18,17 +18,17 @@ class Network: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     @Published var location: CLLocation?
     @Published var city: String?
-
+    
     private let locationManager = CLLocationManager()
     let geoCoder = CLGeocoder()
-
+    
     var currentLong: Double = 36.81
     var currentLat: Double = -1.286
     
     let dateFormatter = ISO8601DateFormatter()
     
     let formatter = DateComponentsFormatter()
-
+    
     override init() {
         super.init()
         
@@ -39,7 +39,10 @@ class Network: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     func getTimes() {
         guard let location = location else { return }
-        guard let url = URL(string: "https://api.sunrise-sunset.org/json?lat=\(location.coordinate.latitude)&lng=\(location.coordinate.longitude)&date=today&formatted=0") else { fatalError()}
+
+        let date = Date().formatted(date: .numeric, time: .omitted)
+
+        guard let url = URL(string: "https://api.sunrise-sunset.org/json?lat=\(location.coordinate.latitude)&lng=\(location.coordinate.longitude)&date=\(date)&formatted=0") else { fatalError()}
         
         let dataTask = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
@@ -51,39 +54,40 @@ class Network: NSObject, ObservableObject, CLLocationManagerDelegate {
             
             if response.statusCode == 200 {
                 guard let data = data else { return }
-            
+                
                 DispatchQueue.main.async {
                     do {
                         let decodedObj = try JSONDecoder().decode(SunriseSunsetAPI.self, from: data)
                         self.sunTimes = decodedObj.results
                         self.localizedSunTimes = LocalizedSunTimes(sunrise: "X", sunset: "X", midday: "X", dayLength: "X")
                         
-                        self.dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+                        self.dateFormatter.timeZone = TimeZone.current
                         
                         if let sunsetTime = self.dateFormatter.date(from: decodedObj.results.sunset) {
-                            self.dateFormatter.timeZone = TimeZone.current
-                        
                             self.localizedSunTimes?.sunset = self.dateFormatter.string(from: sunsetTime)
                         }
                         
                         if let sunriseTime = self.dateFormatter.date(from: decodedObj.results.sunrise) {
-                            self.dateFormatter.timeZone = TimeZone.current
-                        
                             self.localizedSunTimes?.sunrise = self.dateFormatter.string(from: sunriseTime)
                         }
                         
+                        
                         if let middayTime = self.dateFormatter.date(from: decodedObj.results.solar_noon) {
-                            self.dateFormatter.timeZone = TimeZone.current
-                            
                             self.localizedSunTimes?.midday = self.dateFormatter.string(from: middayTime)
                         }
                         
-                        self.formatter.allowedUnits = [.hour, .minute, .second]
-                        self.formatter.unitsStyle = .abbreviated
                         
-                        if let formattedString = self.formatter.string(from: TimeInterval(decodedObj.results.day_length)) {
-                            self.localizedSunTimes?.dayLength = formattedString
+                        func secondsToHoursMinutesSeconds(_ seconds: Int) -> (Int, Int, Int) {
+                            return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
                         }
+                        
+                        let (h,m,s) = secondsToHoursMinutesSeconds(decodedObj.results.day_length)
+
+                        let countdownString = String(format: "%dh %02dm %02ds", h, m, s)
+
+                        
+                        self.localizedSunTimes?.dayLength = countdownString
+                        
                         
                         // Write to UserDefaults to share with Widget Extension
                         UserDefaults(suiteName: "group.ShahLabs.WidgetTests")!
@@ -92,63 +96,63 @@ class Network: NSObject, ObservableObject, CLLocationManagerDelegate {
                         UserDefaults(suiteName: "group.ShahLabs.WidgetTests")!
                             .set(self.localizedSunTimes?.sunrise, forKey: "sunriseTime")
                         
+                                                
+ 
+                        // Get today's year, month and date
+                        guard let date = self.dateFormatter.date(from: Date().ISO8601Format()) else {
+                            return
+                        }
                         
-                        // Calculate decimal based on SunsetTime - SunriseTime and Date()
+                        let formatter = DateFormatter()
+                        formatter.timeZone = TimeZone.current
                         
-                        self.dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+                        formatter.dateFormat = "yyyy"
+                        let year = formatter.string(from: date)
                         
-                        if let sunriseInCurrentTimeZone = self.dateFormatter.date(from: decodedObj.results.sunrise) {
-//                            formatter.dateFormat = "yyyy/MM/dd HH:mm"
-//                            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss 'UTC'"
-
-
-                            guard let date = self.dateFormatter.date(from: Date().ISO8601Format()) else {
-                                return
-                            }
-
-                            let formatter = DateFormatter()
-                            formatter.timeZone = TimeZone.current
-                            formatter.dateFormat = "yyyy"
-                            let year = formatter.string(from: date)
-
-                            formatter.dateFormat = "MM"
-                            let month = formatter.string(from: date)
-                            formatter.dateFormat = "dd"
-                            let day = formatter.string(from: date)
+                        formatter.dateFormat = "MM"
+                        let month = formatter.string(from: date)
+                        formatter.dateFormat = "dd"
+                        let day = formatter.string(from: date)
+                        
+                        let timeZone = TimeZone.current.abbreviation()
+                        self.dateFormatter.timeZone = TimeZone(abbreviation: timeZone!)
+                        
+                        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                        
+                        
+                        // now interpolate the sunrise into degrees for widget
+                        if let midnightUTC = formatter.date(from: "\(year)-\(month)-\(day) 00:00:00"),
+                           let sunriseUTC = self.dateFormatter.date(from: decodedObj.results.sunrise),
+                           let sunsetUTC = self.dateFormatter.date(from: decodedObj.results.sunset){
                             
-                            let timeZone = TimeZone.current.abbreviation()
-//                            self.dateFormatter.timeZone = TimeZone(abbreviation: timeZone!)
                             
-                            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss 'UTC'"
-
-
-                            if let currentTime = formatter.date(from: "\(year)-\(month)-\(day) 06:00:00 UTC") {
-                                
-                                let secondsPassedSince6 = Date().timeIntervalSince(currentTime)
-                                
-                                let currentSunPosition = secondsPassedSince6.interpolated(from: 0...86400, to: 0...1)
-                                
-                                UserDefaults(suiteName: "group.ShahLabs.WidgetTests")!
-                                    .set(currentSunPosition, forKey: "currentPositionDegrees")
-                            }
-
+                            // this conversion to Date is always ending up with UTC time
+                            let secondsPassedFromMidnightToSunrise = sunriseUTC.timeIntervalSince(midnightUTC)
+                            
+                            let sunriseDegrees = secondsPassedFromMidnightToSunrise.interpolated(from: 0...86400, to: 0...1)
+                            
+                            UserDefaults(suiteName: "group.ShahLabs.WidgetTests")!
+                                .set(sunriseDegrees, forKey: "sunriseDegrees")
+                            
+                            
+                            let secondsPassedFromMidnightToSunset = sunsetUTC.timeIntervalSince(midnightUTC)
+                            
+                            let sunsetDegrees = secondsPassedFromMidnightToSunset.interpolated(from: 0...86400, to: 0...1)
+                            
+                            UserDefaults(suiteName: "group.ShahLabs.WidgetTests")!
+                                .set(sunsetDegrees, forKey: "sunsetDegrees")
                             
                         }
                         
                         
-//                        let currentSunPosition = 0.25
-
-                        
-                        // Calculate decimal based on SunsetTime - SunriseTime / 24 hours
-
-                        let sunriseDegrees = 0
-                        UserDefaults(suiteName: "group.ShahLabs.WidgetTests")!
-                            .set(sunriseDegrees, forKey: "sunriseDegrees")
-                        
-                        let sunsetDegrees = 0.5
-                        UserDefaults(suiteName: "group.ShahLabs.WidgetTests")!
-                            .set(sunsetDegrees, forKey: "sunsetDegrees")
-                        
+                        if let midnight = formatter.date(from: "\(year)-\(month)-\(day) 00:00:00") {
+                            let secondsPassedSinceMidnight = Date().timeIntervalSince(midnight)
+                            
+                            let currentSunPositionDegrees = secondsPassedSinceMidnight.interpolated(from: 0...86400, to: -180...180)
+                            
+                            UserDefaults(suiteName: "group.ShahLabs.WidgetTests")!
+                                .set(currentSunPositionDegrees, forKey: "currentPositionDegrees")
+                        }
                         WidgetCenter.shared.reloadAllTimelines()
                     } catch let error {
                         print("Error decoding: ", error)
@@ -177,16 +181,16 @@ class Network: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     
-
-
+    
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-            guard let location = locations.last else { return }
-            DispatchQueue.main.async {
-                self.location = location
-                self.getCurrentCity()
-                self.getTimes()
-                
-            }
+        guard let location = locations.last else { return }
+        DispatchQueue.main.async {
+            self.location = location
+            self.getCurrentCity()
+            self.getTimes()
+            
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -219,22 +223,22 @@ class Network: NSObject, ObservableObject, CLLocationManagerDelegate {
 
 
 extension FloatingPoint {
-  /// Allows mapping between reverse ranges, which are illegal to construct (e.g. `10..<0`).
-  func interpolated(
-    fromLowerBound: Self,
-    fromUpperBound: Self,
-    toLowerBound: Self,
-    toUpperBound: Self) -> Self
-  {
-    let positionInRange = (self - fromLowerBound) / (fromUpperBound - fromLowerBound)
-    return (positionInRange * (toUpperBound - toLowerBound)) + toLowerBound
-  }
-
-  func interpolated(from: ClosedRange<Self>, to: ClosedRange<Self>) -> Self {
-    interpolated(
-      fromLowerBound: from.lowerBound,
-      fromUpperBound: from.upperBound,
-      toLowerBound: to.lowerBound,
-      toUpperBound: to.upperBound)
-  }
+    /// Allows mapping between reverse ranges, which are illegal to construct (e.g. `10..<0`).
+    func interpolated(
+        fromLowerBound: Self,
+        fromUpperBound: Self,
+        toLowerBound: Self,
+        toUpperBound: Self) -> Self
+    {
+        let positionInRange = (self - fromLowerBound) / (fromUpperBound - fromLowerBound)
+        return (positionInRange * (toUpperBound - toLowerBound)) + toLowerBound
+    }
+    
+    func interpolated(from: ClosedRange<Self>, to: ClosedRange<Self>) -> Self {
+        interpolated(
+            fromLowerBound: from.lowerBound,
+            fromUpperBound: from.upperBound,
+            toLowerBound: to.lowerBound,
+            toUpperBound: to.upperBound)
+    }
 }

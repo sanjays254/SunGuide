@@ -15,10 +15,6 @@ final class LocationManager: NSObject, ObservableObject, CLLocationManagerDelega
 
     private let locationManager = CLLocationManager()
     
-//    let locationChange = NotificationCenter.default.publisher(for: .location)
-
-    
-    
     override init() {
         super.init()
         locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
@@ -32,14 +28,13 @@ final class LocationManager: NSObject, ObservableObject, CLLocationManagerDelega
         if let location = location {
             geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, _) -> Void in
                 placemarks?.forEach { (placemark) in
-                    if let cityy = placemark.locality {
-                        self.city = cityy
-
+                    if let locality = placemark.locality {
+                        self.city = locality
                     }
                 }
             })
         } else {
-            self.city = "Unknown location"
+            self.city = nil
         }
     }
     
@@ -69,16 +64,16 @@ final class LocationManager: NSObject, ObservableObject, CLLocationManagerDelega
             print("restricted")
             // Inform user about the restriction
             break
-        case
- .denied:
+        case .denied:
             print("denied")
             // The user denied the use of location services for the app or they are disabled globally in Settings.
             // Direct them to re-enable this.
             break
-        case
- .authorizedAlways, .authorizedWhenInUse:
+        case .authorizedAlways, .authorizedWhenInUse:
             print("authorized")
             manager.requestLocation()
+        @unknown default:
+            break
         }
     }
 }

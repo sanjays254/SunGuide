@@ -6,10 +6,16 @@
 //
 
 import SwiftUI
+import LogRocket
+import lo
+
+
 
 @available(iOS 16.0, *)
 @main
 struct WidgetTestsApp: App {
+//    SDK.initialize(configuration: Configuration(appID: "vzsppu/sunguide")
+                   
     var network = Network()
     @State private var showCredits: Bool = false
 

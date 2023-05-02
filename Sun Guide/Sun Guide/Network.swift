@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 import SwiftUI
 import WidgetKit
 import CoreLocation
@@ -22,13 +21,8 @@ class Network: NSObject, ObservableObject, CLLocationManagerDelegate {
     private let locationManager = CLLocationManager()
     let geoCoder = CLGeocoder()
     
-    var currentLong: Double = 36.81
-    var currentLat: Double = -1.286
-    
     let dateFormatter = ISO8601DateFormatter()
-    
-    let formatter = DateComponentsFormatter()
-    
+        
     override init() {
         super.init()
         
@@ -37,7 +31,7 @@ class Network: NSObject, ObservableObject, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
     }
     
-    func getTimes() {
+    func getTimes(completion: ((_ sunriseDegrees: Double, _ sunsetDegrees: Double) -> ())? = nil) {
         guard let location = location else { return }
 
         let date = Date().formatted(date: .numeric, time: .omitted)
@@ -46,6 +40,7 @@ class Network: NSObject, ObservableObject, CLLocationManagerDelegate {
         
         let dataTask = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
+                
                 print("Request error:", error)
                 return
             }
@@ -88,14 +83,6 @@ class Network: NSObject, ObservableObject, CLLocationManagerDelegate {
                         
                         self.localizedSunTimes?.dayLength = countdownString
                         
-                        
-                        // Write to UserDefaults to share with Widget Extension
-                        UserDefaults(suiteName: "group.ShahLabs.WidgetTests")!
-                            .set(self.localizedSunTimes?.sunset, forKey: "sunsetTime")
-                        
-                        UserDefaults(suiteName: "group.ShahLabs.WidgetTests")!
-                            .set(self.localizedSunTimes?.sunrise, forKey: "sunriseTime")
-                        
                                                 
  
                         // Get today's year, month and date
@@ -113,45 +100,41 @@ class Network: NSObject, ObservableObject, CLLocationManagerDelegate {
                         let month = formatter.string(from: date)
                         formatter.dateFormat = "dd"
                         let day = formatter.string(from: date)
+                    
                         
-                        let timeZone = TimeZone.current.abbreviation()
-                        self.dateFormatter.timeZone = TimeZone(abbreviation: timeZone!)
+                        if let timeZone = TimeZone.current.abbreviation() {
+                            self.dateFormatter.timeZone = TimeZone(abbreviation: timeZone)
+                        }
+                        
                         
                         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                        
-                        
+                        let numberOfSecondsInOneDay: TimeInterval = 86400
+                        guard let userDefaults = UserDefaults(suiteName: "group.ShahLabs.WidgetTests") else { return
+                        }
+
                         // now interpolate the sunrise into degrees for widget
                         if let midnightUTC = formatter.date(from: "\(year)-\(month)-\(day) 00:00:00"),
                            let sunriseUTC = self.dateFormatter.date(from: decodedObj.results.sunrise),
                            let sunsetUTC = self.dateFormatter.date(from: decodedObj.results.sunset){
                             
                             
-                            // this conversion to Date is always ending up with UTC time
                             let secondsPassedFromMidnightToSunrise = sunriseUTC.timeIntervalSince(midnightUTC)
                             
-                            let sunriseDegrees = secondsPassedFromMidnightToSunrise.interpolated(from: 0...86400, to: 0...1)
+                            let sunriseDegrees = secondsPassedFromMidnightToSunrise.interpolated(from: 0...numberOfSecondsInOneDay, to: 0...1)
                             
-                            UserDefaults(suiteName: "group.ShahLabs.WidgetTests")!
-                                .set(sunriseDegrees, forKey: "sunriseDegrees")
+                            userDefaults.set(sunriseDegrees, forKey: "sunriseDegrees")
                             
                             
                             let secondsPassedFromMidnightToSunset = sunsetUTC.timeIntervalSince(midnightUTC)
                             
-                            let sunsetDegrees = secondsPassedFromMidnightToSunset.interpolated(from: 0...86400, to: 0...1)
+                            let sunsetDegrees = secondsPassedFromMidnightToSunset.interpolated(from: 0...numberOfSecondsInOneDay, to: 0...1)
                             
-                            UserDefaults(suiteName: "group.ShahLabs.WidgetTests")!
-                                .set(sunsetDegrees, forKey: "sunsetDegrees")
+                            userDefaults.set(sunsetDegrees, forKey: "sunsetDegrees")
                             
-                        }
-                        
-                        
-                        if let midnight = formatter.date(from: "\(year)-\(month)-\(day) 00:00:00") {
-                            let secondsPassedSinceMidnight = Date().timeIntervalSince(midnight)
+                            if let completion = completion {
+                                completion(sunriseDegrees, sunsetDegrees)
+                            }
                             
-                            let currentSunPositionDegrees = secondsPassedSinceMidnight.interpolated(from: 0...86400, to: -180...180)
-                            
-                            UserDefaults(suiteName: "group.ShahLabs.WidgetTests")!
-                                .set(currentSunPositionDegrees, forKey: "currentPositionDegrees")
                         }
                         WidgetCenter.shared.reloadAllTimelines()
                     } catch let error {
@@ -206,17 +189,17 @@ class Network: NSObject, ObservableObject, CLLocationManagerDelegate {
         case .restricted:
             print("restricted")
             // Inform user about the restriction
-            break
-        case
-                .denied:
+            manager.requestWhenInUseAuthorization()
+            
+        case .denied:
             print("denied")
             // The user denied the use of location services for the app or they are disabled globally in Settings.
             // Direct them to re-enable this.
             break
-        case
-                .authorizedAlways, .authorizedWhenInUse:
-            print("authorized")
+        case .authorizedAlways, .authorizedWhenInUse:
             manager.requestLocation()
+        default:
+            print("unknown")
         }
     }
 }

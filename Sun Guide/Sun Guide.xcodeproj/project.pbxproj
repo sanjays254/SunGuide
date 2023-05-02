@@ -18,6 +18,8 @@
 		A0ABC56C29815921005756F5 /* SunlightTimelineEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF83C8298155C7007E6216 /* SunlightTimelineEntry.swift */; };
 		A0ABC56D29815928005756F5 /* SunlightWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF83C2298155C7007E6216 /* SunlightWidget.swift */; };
 		A0ADA14929CA847500A25E5C /* BackgroundGradientCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ADA14829CA847500A25E5C /* BackgroundGradientCalculator.swift */; };
+		A0E867CC29F46FEF00A9EC31 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF83CC298155C7007E6216 /* Network.swift */; };
+		A0E867CD29F474CC00A9EC31 /* SunTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF83C1298155C7007E6216 /* SunTimes.swift */; };
 		A0FF83B6298154B8007E6216 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF83B5298154B8007E6216 /* ContentView.swift */; };
 		A0FF83B8298154B9007E6216 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0FF83B7298154B9007E6216 /* Assets.xcassets */; };
 		A0FF83BB298154B9007E6216 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0FF83BA298154B9007E6216 /* Preview Assets.xcassets */; };
@@ -63,8 +65,9 @@
 		A0ABC55D298158B8005756F5 /* SunTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTracker.swift; sourceTree = "<group>"; };
 		A0ABC55F298158B8005756F5 /* SunTracker.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = SunTracker.intentdefinition; sourceTree = "<group>"; };
 		A0ABC560298158B9005756F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A0ABC562298158B9005756F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0ADA14829CA847500A25E5C /* BackgroundGradientCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundGradientCalculator.swift; sourceTree = "<group>"; };
+		A0E867D029F493A500A9EC31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0E867D429F4950E00A9EC31 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0FF83B0298154B8007E6216 /* Sun Guide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sun Guide.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0FF83B5298154B8007E6216 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A0FF83B7298154B9007E6216 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -73,7 +76,6 @@
 		A0FF83C2298155C7007E6216 /* SunlightWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SunlightWidget.swift; sourceTree = "<group>"; };
 		A0FF83C3298155C7007E6216 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		A0FF83C4298155C7007E6216 /* CreditsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
-		A0FF83C5298155C7007E6216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Sun Guide/Info.plist"; sourceTree = SOURCE_ROOT; };
 		A0FF83C6298155C7007E6216 /* SunGuide.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = SunGuide.entitlements; path = "Sun Guide/SunGuide.entitlements"; sourceTree = "<group>"; };
 		A0FF83C7298155C7007E6216 /* SunGuideWidgetExtension.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = SunGuideWidgetExtension.entitlements; path = "Sun Guide/SunGuideWidgetExtension.entitlements"; sourceTree = "<group>"; };
 		A0FF83C8298155C7007E6216 /* SunlightTimelineEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SunlightTimelineEntry.swift; sourceTree = "<group>"; };
@@ -116,10 +118,10 @@
 			children = (
 				A0FF83C2298155C7007E6216 /* SunlightWidget.swift */,
 				A0FF83C8298155C7007E6216 /* SunlightTimelineEntry.swift */,
+				A0E867D429F4950E00A9EC31 /* Info.plist */,
 				A0ABC55D298158B8005756F5 /* SunTracker.swift */,
 				A0ABC55F298158B8005756F5 /* SunTracker.intentdefinition */,
 				A0ABC560298158B9005756F5 /* Assets.xcassets */,
-				A0ABC562298158B9005756F5 /* Info.plist */,
 			);
 			path = SunTracker;
 			sourceTree = "<group>";
@@ -128,7 +130,6 @@
 			isa = PBXGroup;
 			children = (
 				A07EA22629C6BF05004F69CB /* SunTrackerExtension.entitlements */,
-				A07EA22329C69760004F69CB /* SunlightLeftCalculator.swift */,
 				A0FF83C6298155C7007E6216 /* SunGuide.entitlements */,
 				A0FF83C7298155C7007E6216 /* SunGuideWidgetExtension.entitlements */,
 				A0FF83B2298154B8007E6216 /* Sun Guide */,
@@ -151,10 +152,11 @@
 			isa = PBXGroup;
 			children = (
 				A07EA22529C6BE57004F69CB /* Sun Guide.entitlements */,
-				A0FF83C5298155C7007E6216 /* Info.plist */,
 				A0FF83C3298155C7007E6216 /* LocationManager.swift */,
 				A0FF83CC298155C7007E6216 /* Network.swift */,
+				A07EA22329C69760004F69CB /* SunlightLeftCalculator.swift */,
 				A0ADA14829CA847500A25E5C /* BackgroundGradientCalculator.swift */,
+				A0E867D029F493A500A9EC31 /* Info.plist */,
 				A0FF83CA298155C7007E6216 /* SunGuideApp.swift */,
 				A0FF83C4298155C7007E6216 /* CreditsView.swift */,
 				A0FF83CB298155C7007E6216 /* FormattedTimeLabel.swift */,
@@ -206,9 +208,12 @@
 			buildRules = (
 			);
 			dependencies = (
+				A0E867DD29F9E71D00A9EC31 /* PBXTargetDependency */,
 				A0ABC566298158B9005756F5 /* PBXTargetDependency */,
 			);
 			name = "Sun Guide";
+			packageProductDependencies = (
+			);
 			productName = "Sun Guide";
 			productReference = A0FF83B0298154B8007E6216 /* Sun Guide.app */;
 			productType = "com.apple.product-type.application";
@@ -240,6 +245,8 @@
 				Base,
 			);
 			mainGroup = A0FF83A7298154B8007E6216;
+			packageReferences = (
+			);
 			productRefGroup = A0FF83B1298154B8007E6216 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -275,6 +282,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0E867CC29F46FEF00A9EC31 /* Network.swift in Sources */,
+				A0E867CD29F474CC00A9EC31 /* SunTimes.swift in Sources */,
 				A0ABC563298158B9005756F5 /* SunTracker.intentdefinition in Sources */,
 				A0ABC56D29815928005756F5 /* SunlightWidget.swift in Sources */,
 				A0ABC55E298158B8005756F5 /* SunTracker.swift in Sources */,
@@ -307,6 +316,10 @@
 			target = A0ABC555298158B8005756F5 /* SunTrackerExtension */;
 			targetProxy = A0ABC565298158B9005756F5 /* PBXContainerItemProxy */;
 		};
+		A0E867DD29F9E71D00A9EC31 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = A0E867DC29F9E71D00A9EC31 /* LogRocket */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -323,6 +336,7 @@
 				INFOPLIST_FILE = SunTracker/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SunTracker;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Need your location for showing you the sun's positon relative to you!";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -351,6 +365,7 @@
 				INFOPLIST_FILE = SunTracker/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SunTracker;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Need your location for showing you the sun's positon relative to you!";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -496,11 +511,15 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Sun Guide/Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Your location is needed for finding the sun's position relative to you";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Your location is needed for finding the sun's position relative to you";
+				INFOPLIST_KEY_NSLocationUsageDescription = "Your location is needed for finding the sun's position relative to you";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location is needed for finding the sun's position relative to you";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -508,9 +527,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "ShahLabs.Sun-Guide";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -528,11 +550,15 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Sun Guide/Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Your location is needed for finding the sun's position relative to you";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Your location is needed for finding the sun's position relative to you";
+				INFOPLIST_KEY_NSLocationUsageDescription = "Your location is needed for finding the sun's position relative to you";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location is needed for finding the sun's position relative to you";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -540,9 +566,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "ShahLabs.Sun-Guide";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -577,6 +606,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A0E867D929F9E6B600A9EC31 /* XCRemoteSwiftPackageReference "logrocket-ios-swift-package" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/LogRocket/logrocket-ios-swift-package";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A0E867DC29F9E71D00A9EC31 /* LogRocket */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A0E867D929F9E6B600A9EC31 /* XCRemoteSwiftPackageReference "logrocket-ios-swift-package" */;
+			productName = LogRocket;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A0FF83A8298154B8007E6216 /* Project object */;
 }

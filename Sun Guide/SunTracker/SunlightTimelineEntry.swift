@@ -10,9 +10,7 @@ import WidgetKit
 
 struct SunlightTimelineEntry: TimelineEntry {
     var date: Date
-    let sunsetTime: String
-    let sunriseTime: String
-    let currentSunPosition: CGFloat
+    let currentSunPosition: Int
     let sunriseDegrees: CGFloat
     let sunsetDegrees: CGFloat
 }

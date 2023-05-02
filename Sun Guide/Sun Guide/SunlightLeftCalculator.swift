@@ -51,7 +51,6 @@ extension ContentView {
                 let seconds = calendar.component(.second, from: date)
                 
                 if (now.timeIntervalSince1970 < sunrise.timeIntervalSince1970 ) {
-                    let string = String(format: "%dh %02dm", hours, minutes, seconds)
                     self.countdown = "A full day of sun ahead of you 😌"
                     return
                 }

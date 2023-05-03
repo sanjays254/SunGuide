@@ -1,0 +1,16 @@
+PODS:
+  - LogRocket (1.15.0)
+
+DEPENDENCIES:
+  - LogRocket (~> 1.0)
+
+SPEC REPOS:
+  trunk:
+    - LogRocket
+
+SPEC CHECKSUMS:
+  LogRocket: 68f7e96c6fe087b0daeca83b771d742d274ebc09
+
+PODFILE CHECKSUM: 124cd6234df029ed45e2424bc76c7888791811f4
+
+COCOAPODS: 1.12.0

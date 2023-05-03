@@ -76,7 +76,12 @@ struct WidgetTimelineProvider: TimelineProvider {
     
     func getTimeline(in context: Context, completion: @escaping (Timeline<SunlightTimelineEntry>) -> ()) {
         // fetch from network instead of using UserDefaults
-        network.getTimes { sunriseDegrees, sunsetDegrees in
+
+        if let userDefaults = UserDefaults(suiteName: "group.ShahLabs.WidgetTests"),
+           let sunsetDegrees = userDefaults.object(forKey: "sunsetDegrees") as? CGFloat,
+           let sunriseDegrees = userDefaults.object(forKey: "sunriseDegrees") as? CGFloat {
+        
+//        network.getTimes { sunriseDegrees, sunsetDegrees in
             if let midnight = midnightDate() {
                 
                 // we should have an entry every 30 mins in a timeline.

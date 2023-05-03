@@ -1,0 +1,6 @@
+framework module Pods_Sun_Guide {
+  umbrella header "Pods-Sun Guide-umbrella.h"
+
+  export *
+  module * { export * }
+}

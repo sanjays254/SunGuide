@@ -10,6 +10,7 @@ import Foundation
 import SwiftUI
 import WidgetKit
 import CoreLocation
+import LogRocket
 
 class Network: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var sunTimes: SunTimes? = nil
@@ -32,23 +33,37 @@ class Network: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func getTimes(completion: ((_ sunriseDegrees: Double, _ sunsetDegrees: Double) -> ())? = nil) {
-        guard let location = location else { return }
+        guard let location = location else {
+            Logger.error(message: "location is nil")
+            return
+            
+        }
 
         let date = Date().formatted(date: .numeric, time: .omitted)
 
-        guard let url = URL(string: "https://api.sunrise-sunset.org/json?lat=\(location.coordinate.latitude)&lng=\(location.coordinate.longitude)&date=\(date)&formatted=0") else { fatalError()}
+        guard let url = URL(string: "https://api.sunrise-sunset.org/json?lat=\(location.coordinate.latitude)&lng=\(location.coordinate.longitude)&date=\(date)&formatted=0") else {
+            
+            Logger.error(message: "Error converting string to URL for request")
+            return
+        }
         
         let dataTask = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
-                
-                print("Request error:", error)
+                Logger.error(message: "Request error: \(error)")
                 return
             }
             
-            guard let response = response as? HTTPURLResponse else { return }
+            guard let response = response as? HTTPURLResponse else {
+                Logger.error(message: "Error converting response to HTTPURLResponse" )
+                return
+                
+            }
             
             if response.statusCode == 200 {
-                guard let data = data else { return }
+                guard let data = data else {
+                    Logger.error(message: "Response is 200, but data is nil. Lat: \(location.coordinate.latitude) long: \(location.coordinate.longitude) Date=\(date)")
+                    return
+                }
                 
                 DispatchQueue.main.async {
                     do {
@@ -138,7 +153,7 @@ class Network: NSObject, ObservableObject, CLLocationManagerDelegate {
                         }
                         WidgetCenter.shared.reloadAllTimelines()
                     } catch let error {
-                        print("Error decoding: ", error)
+                        Logger.error(message: "Error decoding JSON: \(error)")
                     }
                 }
             }
@@ -159,6 +174,7 @@ class Network: NSObject, ObservableObject, CLLocationManagerDelegate {
                 }
             })
         } else {
+            Logger.error(message: "Failed to reverse geocode location.")
             self.city = "Unknown location"
         }
     }
@@ -167,39 +183,42 @@ class Network: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else { return }
+        guard let location = locations.last else {
+            Logger.error(message: "last location is nil")
+            return
+        }
         DispatchQueue.main.async {
             self.location = location
             self.getCurrentCity()
             self.getTimes()
-            
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
+        Logger.error(message: "accessing location failed with error: \(error)")
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         
         switch status {
         case .notDetermined:
-            print("notDetermined")
+            Logger.info(message: "location notDetermined")
             manager.requestWhenInUseAuthorization()
         case .restricted:
-            print("restricted")
+            Logger.info(message: "location restricted")
             // Inform user about the restriction
             manager.requestWhenInUseAuthorization()
             
         case .denied:
-            print("denied")
+            Logger.info(message: "location denied")
             // The user denied the use of location services for the app or they are disabled globally in Settings.
             // Direct them to re-enable this.
             break
         case .authorizedAlways, .authorizedWhenInUse:
+            // is this needed?
             manager.requestLocation()
         default:
-            print("unknown")
+            Logger.error(message: "unknown location status")
         }
     }
 }

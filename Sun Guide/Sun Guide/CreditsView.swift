@@ -34,14 +34,20 @@ struct CreditsView: View {
                     .foregroundColor(.white)
                     .font(.subheadline)
                     .padding(.all)
-                Text("Also...check out our lock screen widget!")
+                Text("Also...check out our Lock Screen widget!")
                     .foregroundColor(.white)
-                    .italic()
                     .font(.subheadline)
+                Text("(Long press on your Lock Screen to add it)")
+                    .foregroundColor(Color(UIColor(white: 1, alpha: 0.8)))
+                    .italic()
+                    .font(.caption)
                 Image("accessoryCircular")
                     .font(.system(size: 45))
                     .cornerRadius(10)
                     .padding(.all)
+                
+
+
                 Text("© Shah Labs")
                     .foregroundColor(.white)
                     .font(.subheadline)

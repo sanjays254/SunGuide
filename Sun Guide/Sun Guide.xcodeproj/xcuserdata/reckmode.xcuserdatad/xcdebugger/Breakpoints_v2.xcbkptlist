@@ -16,8 +16,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "28"
             endingLineNumber = "28"
-            landmarkName = "getSnapshot(in:completion:)"
-            landmarkType = "7">
+            landmarkName = "WidgetTimelineProvider"
+            landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -32,7 +32,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "45"
             endingLineNumber = "45"
-            landmarkName = "getTimeline(in:completion:)"
+            landmarkName = "midnightDate()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -96,56 +96,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "54"
             endingLineNumber = "54"
-            landmarkName = "getTimeline(in:completion:)"
+            landmarkName = "midnightDate()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "21B4D579-4F8A-40AE-B2D4-A6EB2C7AE135"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sun Guide/Network.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "getTimes()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "21B4D579-4F8A-40AE-B2D4-A6EB2C7AE135 - 27626ad8cde8ec5f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Sun_Guide.Network.getTimes() -&gt; ()"
-                  moduleName = "Sun Guide"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/reckmode/Documents/Sun%20Guide/Sun%20Guide/Sun%20Guide/Network.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "90"
-                  endingLineNumber = "90"
-                  offsetFromSymbolStart = "5708">
-               </Location>
-               <Location
-                  uuid = "21B4D579-4F8A-40AE-B2D4-A6EB2C7AE135 - 27626ad8cde8ecbe"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Sun_Guide.Network.getTimes() -&gt; ()"
-                  moduleName = "Sun Guide"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/reckmode/Documents/Sun%20Guide/Sun%20Guide/Sun%20Guide/Network.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "89"
-                  endingLineNumber = "89"
-                  offsetFromSymbolStart = "4972">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

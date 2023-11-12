@@ -13,6 +13,8 @@ import LogRocket
 @main
 struct WidgetTestsApp: App {
     var network = Network()
+    var locationManager = LocationManager()
+
     @State private var showCredits: Bool = false
 
     init() {
@@ -26,6 +28,7 @@ struct WidgetTestsApp: App {
                 ContentView(showModal: $showCredits)
                     .blur(radius: (showCredits ? 10 : 0))
                     .environmentObject(network)
+                    .environmentObject(locationManager)
                 if showCredits {
                     CreditsView(showModal: $showCredits)
                 }

@@ -10,9 +10,13 @@ import CoreLocation
 
 @available(iOS 16.0, *)
 struct ContentView: View {
-    @EnvironmentObject var network: Network
-    @Environment(\.scenePhase) var scenePhase
     
+    @ObservedObject var weatherKitManager = WeatherKitManager()
+
+    @EnvironmentObject var locationManager: LocationManager
+    @EnvironmentObject var network: Network
+
+    @Environment(\.scenePhase) var scenePhase
     
     
     @StateObject private var calculator = SunlightLeftCalculator()
@@ -83,7 +87,7 @@ struct ContentView: View {
                             Text("Midday")
                                 .foregroundColor(.white)
                                 .font(.caption2)
-                            FormattedTimeLabel(time: network.localizedSunTimes?.midday)
+                            FormattedTimeLabel(time: weatherKitManager.localizedSunTimes?.midday)
                         }
                         .padding(20)
                         HStack {
@@ -94,7 +98,7 @@ struct ContentView: View {
                                 
                                 Text("Sunrise")
                                     .foregroundColor(.white)
-                                FormattedTimeLabel(time: network.localizedSunTimes?.sunrise)
+                                FormattedTimeLabel(time: weatherKitManager.localizedSunTimes?.sunrise)
                             }
                             .padding(20)
                             Spacer()
@@ -104,7 +108,7 @@ struct ContentView: View {
                                     .font(.system(size: 35))
                                 Text("Sunset")
                                     .foregroundColor(.white)
-                                FormattedTimeLabel(time: network.localizedSunTimes?.sunset)
+                                FormattedTimeLabel(time: weatherKitManager.localizedSunTimes?.sunset)
                             }
                             .padding(20)
                             
@@ -130,8 +134,8 @@ struct ContentView: View {
                                 .font(.caption)
                             Spacer()
                             
-                            if (network.localizedSunTimes != nil) {
-                                Text(network.localizedSunTimes!.dayLength)
+                            if (weatherKitManager.localizedSunTimes != nil) {
+                                Text(weatherKitManager.localizedSunTimes!.dayLength)
                                     .foregroundColor(.white)
                                     .font(.title3)
                             } else {
@@ -243,7 +247,7 @@ struct ContentView: View {
         
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .active {
-                network.getTimes()
+//                network.getTimes()
                 //                 backgroundGradient.calculate()
                 //                 timer.upstream.connect()
                 startTimer()
@@ -266,6 +270,9 @@ struct ContentView: View {
                 backgroundGradient.setSunriseTime(sunriseTime: sunriseTime)
                 
             }
+            
+            await weatherKitManager.getWeather()
+
         }
     }
     

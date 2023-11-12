@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		581A19BBFA7E85B0648EBC17 /* Pods_Sun_Guide.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C452179B73FE23EE5DBFCCA /* Pods_Sun_Guide.framework */; };
 		A07EA22429C69760004F69CB /* SunlightLeftCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07EA22329C69760004F69CB /* SunlightLeftCalculator.swift */; };
+		A0980E962A2D411800950C40 /* WeatherKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0980E952A2D411800950C40 /* WeatherKitManager.swift */; };
+		A0980E982A2E17C900950C40 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0980E972A2E17C900950C40 /* LocationManager.swift */; };
 		A0ABC559298158B8005756F5 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0ABC558298158B8005756F5 /* WidgetKit.framework */; };
 		A0ABC55B298158B8005756F5 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0ABC55A298158B8005756F5 /* SwiftUI.framework */; };
 		A0ABC55E298158B8005756F5 /* SunTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ABC55D298158B8005756F5 /* SunTracker.swift */; };
@@ -64,6 +66,8 @@
 		A07EA22329C69760004F69CB /* SunlightLeftCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunlightLeftCalculator.swift; sourceTree = "<group>"; };
 		A07EA22529C6BE57004F69CB /* Sun Guide.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Sun Guide.entitlements"; sourceTree = "<group>"; };
 		A07EA22629C6BF05004F69CB /* SunTrackerExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SunTrackerExtension.entitlements; sourceTree = "<group>"; };
+		A0980E952A2D411800950C40 /* WeatherKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherKitManager.swift; sourceTree = "<group>"; };
+		A0980E972A2E17C900950C40 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		A0ABC556298158B8005756F5 /* SunTrackerExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SunTrackerExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0ABC558298158B8005756F5 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		A0ABC55A298158B8005756F5 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -164,12 +168,14 @@
 			children = (
 				A07EA22529C6BE57004F69CB /* Sun Guide.entitlements */,
 				A0FF83CC298155C7007E6216 /* Network.swift */,
+				A0980E972A2E17C900950C40 /* LocationManager.swift */,
 				A07EA22329C69760004F69CB /* SunlightLeftCalculator.swift */,
 				A0ADA14829CA847500A25E5C /* BackgroundGradientCalculator.swift */,
 				A0E867D029F493A500A9EC31 /* Info.plist */,
 				A0FF83CA298155C7007E6216 /* SunGuideApp.swift */,
 				A0FF83C4298155C7007E6216 /* CreditsView.swift */,
 				A0FF83CB298155C7007E6216 /* FormattedTimeLabel.swift */,
+				A0980E952A2D411800950C40 /* WeatherKitManager.swift */,
 				A0FF83C1298155C7007E6216 /* SunTimes.swift */,
 				A0FF83B5298154B8007E6216 /* ContentView.swift */,
 				A0FF83B7298154B9007E6216 /* Assets.xcassets */,
@@ -382,12 +388,14 @@
 				A07EA22429C69760004F69CB /* SunlightLeftCalculator.swift in Sources */,
 				A0FF83B6298154B8007E6216 /* ContentView.swift in Sources */,
 				A0FF83D5298155C8007E6216 /* FormattedTimeLabel.swift in Sources */,
+				A0980E982A2E17C900950C40 /* LocationManager.swift in Sources */,
 				A0ADA14929CA847500A25E5C /* BackgroundGradientCalculator.swift in Sources */,
 				A0FF83D6298155C8007E6216 /* Network.swift in Sources */,
 				A0FF83D4298155C8007E6216 /* SunGuideApp.swift in Sources */,
 				A0FF83D0298155C8007E6216 /* CreditsView.swift in Sources */,
 				A0ABC564298158B9005756F5 /* SunTracker.intentdefinition in Sources */,
 				A0FF83CD298155C8007E6216 /* SunTimes.swift in Sources */,
+				A0980E962A2D411800950C40 /* WeatherKitManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

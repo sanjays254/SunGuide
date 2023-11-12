@@ -11,6 +11,7 @@ import SwiftUI
 import WidgetKit
 import CoreLocation
 import LogRocket
+import WeatherKit
 
 class Network: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var sunTimes: SunTimes? = nil
@@ -23,6 +24,9 @@ class Network: NSObject, ObservableObject, CLLocationManagerDelegate {
     let geoCoder = CLGeocoder()
     
     let dateFormatter = ISO8601DateFormatter()
+    
+    let weatherService = WeatherService()
+    let sanFrancisco = CLLocation(latitude: 37.7749, longitude: 122.4194)
         
     override init() {
         super.init()
@@ -32,13 +36,14 @@ class Network: NSObject, ObservableObject, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
     }
     
+    
     func getTimes(completion: ((_ sunriseDegrees: Double, _ sunsetDegrees: Double) -> ())? = nil) {
         guard let location = location else {
             Logger.error(message: "location is nil")
             return
             
         }
-
+        
         let date = Date().formatted(date: .numeric, time: .omitted)
 
         guard let url = URL(string: "https://api.sunrise-sunset.org/json?lat=\(location.coordinate.latitude)&lng=\(location.coordinate.longitude)&date=\(date)&formatted=0") else {
@@ -190,7 +195,7 @@ class Network: NSObject, ObservableObject, CLLocationManagerDelegate {
         DispatchQueue.main.async {
             self.location = location
             self.getCurrentCity()
-            self.getTimes()
+//            self.getTimes()
         }
     }
     
